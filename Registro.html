@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <script>
+        function validateEmail() {
+            const email = document.getElementById("email").value;
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function handleSubmit(event) {
+            if (!validateEmail()) {
+                event.preventDefault();
+                alert("Por favor, ingrese un correo electrónico válido.");
+            }
+        }
+    </script>
+</head>
+<body style="background-color:#48c9b0;">
+    <center>
+    <h2>Formulario de Registro</h2>
+    <form action="Respuesta.php" method="post" onsubmit="handleSubmit(event)">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        
+        <label for="institucion">Institución:</label>
+        <input type="text" id="institucion" name="institucion" required><br><br>
+        
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" required><br><br>
+        
+        <label>Género:</label>
+        <input type="radio" id="masculino" name="genero" value="masculino" required>
+        <label for="masculino">Masculino</label>
+        <input type="radio" id="femenino" name="genero" value="femenino" required>
+        <label for="femenino">Femenino</label><br><br>
+        
+        <label>Área de interés:</label><br>
+        <input type="checkbox" id="informatica" name="area_interes[]" value="informatica">
+        <label for="informatica">Programacion</label><br>
+        <input type="checkbox" id="educacion" name="area_interes[]" value="educacion">
+        <label for="educacion">Redes</label><br>
+        <input type="checkbox" id="ia" name="area_interes[]" value="ia">
+        <label for="ia">Inteligencia Artificial</label><br><br>
+        
+        <label for="fecha_asistencia">Fecha de asistencia:</label>
+        <input type="date" id="fecha_asistencia" name="fecha_asistencia" required><br><br>
+        <label for="dias_asistencia">Días de asistencia:</label>
+        <select id="dias_asistencia" name="dias_asistencia" required>
+            <option value="1">1 día</option>
+            <option value="2">2 días</option>
+            <option value="3">3 días</option>
+        </select><br><br>
+        
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <button type="submit">Enviar</button>
+        <button type="reset">Cancelar</button>
+    </form>
+    </center>
+</body>
+</html>
